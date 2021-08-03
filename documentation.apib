@@ -1,0 +1,24 @@
+FORMAT: 1A
+
+# Basic My Recipe Book API
+
+# Group Recipes
+
+Recurso que interactúa con las recetas de la API
+
+## Recipes collection [/recipes]
+
+### Listar todas las recetas [GET]
+
++ Response 200 (application/json)
+        [
+            {
+                "nombre": "string",
+                "procedimiento": "string",
+                "ingredientes": "array",
+                "ts_created": "Date"
+            }
+        ]
+
++ Response 500 (application/json)
+

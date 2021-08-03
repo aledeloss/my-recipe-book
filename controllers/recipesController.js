@@ -1,6 +1,6 @@
 const Recipe = require("../models/Recipe");
 
-const all = async (req, res) => {
+const all = async (_, res) => {
   try {
     const data = await Recipe.find();
     res.json(data);
@@ -15,11 +15,15 @@ const create = (req, res) => {
   res.sendStatus(201).json();
 };
 
-const find = (req, res) => {
-  console.log(req.params);
-  const { id } = req.params;
-  const recipe = recipes.find((recipe) => recipe.id === parseInt(id));
-  res.json(recipe);
+const find = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const data = await Recipe.findById(id);
+    res.json(data);
+  } catch(e){
+    console.error(e);
+    res.sendStatus(500);
+  };
 };
 
 module.exports = { all, create, find };
