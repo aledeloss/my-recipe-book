@@ -1,33 +1,39 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require("mongoose");
 
-const UserSchema = Schema({
+const UserSchema = Schema(
+  {
     email: {
-        type: String,
-        required: true,
-        unique: true,
-        trim: true
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
     },
     password: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     name: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     lastname: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
-    tsCreate: {
-        type: Date,
-        dafalt: Date.now()
+    verificationCode: {
+      type: String,
+      required: true,
+    },
+    role: {
+      type: String,
+      default: "user",
     },
     enable: {
-        type: Boolean,
-        default: false
-    }
-})
+      type: Boolean,
+      default: false,
+    },
+  },
+  { timestamps: true }
+);
 
-
-module.exports = model('users', UserSchema);
+module.exports = model("users", UserSchema);

@@ -1,29 +1,34 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require("mongoose");
 
 const RecipeSchema = Schema({
   nombre: {
     type: String,
-    required: true
+    required: true,
   },
   ingredientes: {
     type: Array,
-    required: true
-  },  
+    required: true,
+  },
+  ingredients: {
+    type: Schema.Types.ObjectId,
+    ref: "Ingredient",
+    required: false,
+  },
   procedimiento: {
     type: String,
-    required: true
+    required: true,
   },
   dificultad: {
     type: String,
-    required: false
+    required: false,
   },
   enabled: {
     type: Boolean,
-    default: true
+    default: true,
   },
   ts_create: {
     type: Date,
-    default: Date.now
+    default: Date.now,
   },
 });
 
@@ -43,4 +48,4 @@ const RecipeSchema = Schema({
 // };
 
 //module.exports = { getAll };
-module.exports = model('recipes', RecipeSchema);
+module.exports = model("recipes", RecipeSchema);
